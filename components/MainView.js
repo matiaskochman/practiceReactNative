@@ -9,7 +9,7 @@ import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import Swiper from 'react-native-swiper';
 import styles from '../Styles';
 
-import Day1 from './views/Day1';
+import Day1 from './views/day1/Day1';
 
 class MainView extends Component{
 
