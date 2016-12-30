@@ -18,6 +18,7 @@ class MainView extends Component{
         <Text>hola</Text>
         <Text>hola</Text>
         <Text>hola</Text>
+        
       </View>
     );
   }
