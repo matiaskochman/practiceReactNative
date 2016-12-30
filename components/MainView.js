@@ -9,6 +9,8 @@ import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import Swiper from 'react-native-swiper';
 import styles from '../Styles';
 
+import Day1 from './views/Day1';
+
 class MainView extends Component{
 
 
@@ -18,7 +20,7 @@ class MainView extends Component{
       days:[{
         key:0,
         title:"A stopwatch",
-        component: 'day1',
+        component: Day1,
         isFA: false,
         icon: "ios-stopwatch",
         size: 48,
@@ -29,11 +31,20 @@ class MainView extends Component{
     }
   }
 
+  _jumpToDay(index){
+    this.props.navigator.push({
+      title: this.state.days[index].title,
+      index: index + 1,
+      display: !this.state.days[index].hideNav,
+      component: this.state.days[index].component,
+    })
+  }
 
   render(){
+    var onThis = this;
     var apps = this.state.days.map(function(element,index){
       return(
-        <TouchableHighlight key={element.key} style={[styles.touchBox, index%3==2?styles.touchBox2:styles.touchBox1]} underlayColor="#eee" >
+        <TouchableHighlight onPress={()=> onThis._jumpToDay(index)} key={element.key} style={[styles.touchBox, index%3==2?styles.touchBox2:styles.touchBox1]} underlayColor="#eee" >
           <View style={styles.boxContainer}>
             <Text style={styles.boxText}>Day {index+1}</Text>
             { element.isFA? <IconFontAwesome size={element.size} name={element.icon} style={[styles.boxIcon,{color:element.color}]}></IconFontAwesome>:

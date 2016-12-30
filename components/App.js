@@ -52,6 +52,7 @@ import MainView from './MainView';
           }}
           configureScene={this.configureScene}
           renderScene={(route, navigator) => {
+            /*aca le esto pasando las props a MainView (route.component)*/
             return <route.component navigator={navigator} title={route.title} index={route.index} />
           }}
           navigationBar={
