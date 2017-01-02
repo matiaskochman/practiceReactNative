@@ -10,6 +10,7 @@ import Swiper from 'react-native-swiper';
 import styles from '../Styles';
 
 import Day1 from './views/day1/Day1';
+import Day2 from './views/day2/Weather';
 
 class MainView extends Component{
 
@@ -26,7 +27,15 @@ class MainView extends Component{
         size: 48,
         color: "#ff856c",
         hideNav: false
-
+      },{
+        key:1,
+        title:"A weather app",
+        component: Day2,
+        isFA: false,
+        icon: "ios-partly-sunny",
+        size:60,
+        color:"#90bdc1",
+        hideNav: false,
       }]
     }
   }
@@ -54,7 +63,7 @@ class MainView extends Component{
       );
     });
     return(
-      <View style={{marginTop:70}}>
+      <View style={{marginTop:70,flexDirection:'row'}}>
         {apps}
       </View>
     );
