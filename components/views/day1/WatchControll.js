@@ -8,6 +8,8 @@ class WatchControll extends Component{
     super(props);
     this.state = {
       watchOn: false,
+      startBtnText: "Start",
+      addRecordBtnText: "Add Record",
       startBtnColor: "#60B644",
       underlayColor:"#fff",
     };
@@ -16,9 +18,9 @@ class WatchControll extends Component{
     if (!this.state.watchOn) {
       this.props.startWatch()
       this.setState({
-        startBtnText: "Start",
+        startBtnText: "Stop",
         startBtnColor: "#ff0044",
-        stopBtnText: "Stop",
+        addRecordBtnText: "Add Record",
         underlayColor:"#eee",
         watchOn: true
       })
@@ -27,7 +29,7 @@ class WatchControll extends Component{
       this.setState({
         startBtnText: "Start",
         startBtnColor: "#60B644",
-        stopBtnText: "Stop",
+        addRecordBtnText: "Add Record",
         underlayColor:"#eee",
         watchOn: false
       })
@@ -58,7 +60,7 @@ class WatchControll extends Component{
         <View style={{flex:1,alignItems:"flex-start"}}>
           <TouchableHighlight onPress={() => {onThis._addRecord()}}
             style={{width: 70,height: 70,borderRadius: 35,backgroundColor:"#fff",alignItems:"center",justifyContent:"center"}}>
-            <Text style={{fontSize:14,backgroundColor:"transparent",color:"#555"}}>{this.state.stopBtnText}</Text>
+            <Text style={{fontSize:14,backgroundColor:"transparent",color:"#555"}}>{this.state.addRecordBtnText}</Text>
           </TouchableHighlight>
         </View>
         <View style={{flex:1,alignItems:"flex-end"}}>

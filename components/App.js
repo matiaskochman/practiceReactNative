@@ -13,9 +13,7 @@ import NavigationBar from './NavigationBarObj';
 import MainView from './MainView';
 
   class App extends Component{
-    componentDidMount() {
-      StatusBar.setBarStyle(0);
-    }
+
     configureScene(route, routeStack) {
       if (route.type == 'Bottom') {
         return Navigator.SceneConfigs.FloatFromBottom;
