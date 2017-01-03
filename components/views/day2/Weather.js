@@ -63,7 +63,7 @@ const weatherData = [
 {   key:1,
     city:"Barcelona",
     night:!1,bg:require("../../img/w3.png"),
-    abs:"\u5927\u90e8\u6674\u6717",
+    abs:"Gracia",
     degree:15,
     today:{week:"\u661f\u671f\u516d",day:"\u4eca\u5929",high:16,low:14},
     hours:[{key:101,time:"\u73b0\u5728",icon:"ios-moon",degree:"15\xb0",color:"rgba(255,255,255,1)"},
@@ -127,21 +127,127 @@ class Weather extends Component{
 
     const slides = this.state.weather.map((element,index) => {
 
+      const hourView = element.hours.map((hourElem, hourIndex) => {
+        return (
+          <View key={hourElem.key} style={{width:55,}}>
+            <Text style={hourIndex==0? {
+              color:"#fff",
+              fontSize:13,
+              textAlign:"center",
+              fontWeight:"500",
+            }:{
+              color:"#fff",
+              fontSize:12,
+              textAlign:"center"
+            }}>{hourElem.time}</Text>
+            <Icon name={hourElem.icon} size={25} style={[{
+              textAlign:"center",
+              paddingTop:5,
+            },{color:hourElem.color}]}></Icon>
+            <Text style={hourIndex==0? {
+              color:"#fff",
+              fontSize:15,
+              textAlign:"center",
+              paddingTop:5,
+              fontWeight:"500"
+            }:{
+              color:"#fff",
+              fontSize:14,
+              paddingTop:5,
+              textAlign:"center"
+            }}>{hourElem.degree}</Text>
+          </View>
+        );
+      });
+
+      const dayView = element.days.map((dayElem, dayIndex) => {
+        return (
+          <View key={dayElem.key} style={{flexDirection:"row",height: 28}}>
+            <View style={{justifyContent:"center",alignItems:"flex-start",flex:1,}}>
+              <Text style={{color:"#fff",paddingLeft:20,fontSize:15,}}>{dayElem.day}</Text>
+            </View>
+            <View style={{justifyContent:"center",alignItems:"center",flex:1,}}>
+              <Icon name={dayElem.icon}  style={{color:"#fff"}} size={25}></Icon>
+            </View>
+            <View style={{justifyContent:"flex-end",alignItems:"center",flex:1,flexDirection:"row",paddingRight:25,}}>
+              <Text style={{color:"#fff",width:35,fontSize:16,textAlign:"right"}}>{dayElem.high}</Text>
+              <Text style={element.night?{
+                color:"#aaa",
+                width:35,
+                fontSize:16,
+                textAlign:"right"
+              }:{
+                color:"#eee",
+                width:35,
+                fontSize:16,
+                textAlign:"right"
+              }}>{dayElem.low}</Text>
+            </View>
+          </View>
+        );
+      });
         return(
-          <View>
-            <Text>slide {index}</Text>
+          <View key={element.key}>
+            {/*la imagen es el fondo de pantalla*/}
+            <Image style={styles.image} source={element.bg}></Image>
+            <ScrollView showsVerticalScrollIndicator={true} style ={{backgroundColor:"transparent",position: "absolute",width: Util.size.width,
+              left:0,
+              top: 20,
+              height: Util.size.height - 53
+            }}>
+                <View style={{paddingTop:70,alignItems:"center",paddingBottom:60,}}>
+                  <Text style={{fontSize:25,color:"#fff",paddingBottom: 5,backgroundColor:"transparent"}}>{element.city}</Text>
+                  <Text style={{fontSize:15,color:"#fff",backgroundColor:"transparent"}}>{element.abs}</Text>
+                  <Text style={{fontSize:85,color:"#fff",fontWeight: "100",}}>{element.degree}</Text>
+                  <Text style={{fontSize:35,color:"#fff",fontWeight: "300",position:"absolute",top:130,right:Util.size.width/2-55,}}>°</Text>
+                </View>
+                <View style={{flexDirection:"column"}}>
+                  <View style={{flexDirection:"row",width: Util.size.width,}}>
+                    <View style={{flex:1,flexDirection:"row",justifyContent: 'flex-start',paddingLeft: 20,}}>
+                      <Text style={{fontSize:15,color: "#fff",fontWeight: "400",width:50,}}>{element.today.week}</Text>
+                      <Text style={{fontSize:15,color: "#fff",fontWeight: "300",width:50,}}>{element.today.day}</Text>
+                    </View>
+                    <View style={{flex:1,flexDirection:"row",justifyContent: 'flex-end',paddingRight: 10,}}>
+                      <Text style={{fontSize:16,color: "#fff",fontWeight: "200",width:30,}}>{element.today.high}</Text>
+                      <Text style={element.night?{
+                        fontSize:16,
+                        color: "#aaa",
+                        fontWeight: "200",
+                        width:30,
+                      }:{
+                        fontSize:16,
+                        color: "#eee",
+                        fontWeight: "200",
+                        width:30,
+                      }}>{element.today.low}</Text>
+                    </View>
+                  </View>
+                  <ScrollView  horizontal={true} showsHorizontalScrollIndicator={false} style={{
+                    marginTop:3,
+                    borderTopColor:"rgba(255,255,255,0.7)",borderTopWidth:Util.pixel,
+                    borderBottomColor:"rgba(255,255,255,0.7)",borderBottomWidth:Util.pixel
+                  }}>
+                    <View style={{
+                      paddingLeft:7,paddingTop:10,paddingBottom:10,paddingRight:10,flexDirection:"row",flexWrap:"nowrap"}}>
+                      {hourView}
+                    </View>
+                  </ScrollView>
+                  <View style={{paddingTop:5}}>
+                    {dayView}
+                  </View>
+                </View>
+            </ScrollView>
           </View>
         );
 
     });
-        
+
     return(
-      <View style={{paddingTop:80}}>
+      <View style={{paddingTop:64}}>
         <Swiper
           style={styles.wrapper}
           showsButtons={true}
-          paginationStyle={{bottom:10, paddingTop:10, borderTopColor:"rgba(255,255,255,0.7)",
-          borderTopWidth:Util.pixel}}
+          paginationStyle={{bottom:10, paddingTop:10, borderTopColor:"rgba(255,255,255,0.7)", borderTopWidth:Util.pixel}}
           dot={<View style={{backgroundColor: 'rgba(255,255,255,0.2)', width: 6, height: 6, borderRadius: 3, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}
           activeDot={<View style={{backgroundColor: 'rgba(255,255,255,0.5)', width: 6, height: 6, borderRadius: 3, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}>
             {slides}
