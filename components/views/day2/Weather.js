@@ -235,7 +235,65 @@ class Weather extends Component{
                   <View style={{paddingTop:5}}>
                     {dayView}
                   </View>
+                  <View style={{marginTop:5,borderTopColor:"rgba(255,255,255,0.7)", borderTopWidth:Util.pixel,
+                    borderBottomColor:"rgba(255,255,255,0.7)", borderBottomWidth:Util.pixel
+                  }}>
+                    <Text style={{color:"#fff",fontSize:15,paddingTop:10,paddingLeft:20,paddingBottom:10,paddingRight:20,}}>{element.info}</Text>
+                  </View>
+                  <View style={{paddingTop:10}}>
+                    <View style={{paddingBottom:10}}>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>rise：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.rise}</Text>
+                      </View>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>down：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.down}</Text>
+                      </View>
+                    </View>
+                    <View style={{paddingBottom:10}}>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>prop：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.prop}</Text>
+                      </View>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>humedad：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.humi}</Text>
+                      </View>
+                    </View>
+                    <View style={{paddingBottom:10}}>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>speed：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}><Text style={{fontSize:10}}>{element.dir}</Text>{element.speed}</Text>
+                      </View>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>feel：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.feel}</Text>
+                      </View>
+                    </View>
+                    <View style={{paddingBottom:10}}>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>rain：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.rain}</Text>
+                      </View>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>press：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.pres}</Text>
+                      </View>
+                    </View>
+                    <View style={{paddingBottom:10}}>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>sight：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.sight}</Text>
+                      </View>
+                      <View style={{flexWrap:'nowrap',flexDirection:'row'}}>
+                        <Text style={{width:Util.size.width/2 -15,color:'#fff',textAlign:'right',fontSize:15}}>uv：</Text>
+                        <Text style={{width:Util.size.width/2-15,paddingLeft:15,flex:1,fontSize:15,color:"#fff"}}>{element.uv}</Text>
+                      </View>
+                    </View>
                 </View>
+                </View>
+
             </ScrollView>
           </View>
         );
